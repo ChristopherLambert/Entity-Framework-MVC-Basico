@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Expressos.Models.Autor>
+
+@{
+    ViewBag.Title = "Autor";
+}
+
+<h2>Autor</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDeNacimento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDeNacimento)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AutorId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AutorId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AutorId })
+        </td>
+    </tr>
+}
+
+</table>

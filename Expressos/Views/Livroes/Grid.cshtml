@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Expressos.Models.Livro>
+
+<table class="table">
+    <tr>
+        <th>
+            <span>Autor</span>
+        </th>
+        <th>
+            <span>Editora</span>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnoLancamento)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Editora.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnoLancamento)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LivroId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LivroId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LivroId })
+            </td>
+        </tr>
+    }
+</table>

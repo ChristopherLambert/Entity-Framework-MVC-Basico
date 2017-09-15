@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Expressos.Models.Livro>
+
+@{
+    ViewBag.Title = "Livro";
+}
+
+<h2>Livro</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<input type="search" id="search" placeholder="Pesquisa" onkeyup="UpdateGrid('Livroes',this.value);" />
+<br />
+<input type="radio" id="t1" name="tipo" value="1" checked> Autor
+<input type="radio" id="t2" name="tipo" value="2"> Eitora
+<input type="radio" id="t3" name="tipo" value="3"> Titulo
+
+<div id="gridup">
+    @Html.Partial("Grid")
+</div>
+
+<script>
+    function UpdateGrid(control, query) {
+
+        var tipo = "";
+        if ($("#t1").is(':checked')) {
+            tipo = "1;"
+        } else if ($("#t2").is(':checked')) {
+            tipo = "2";
+        } else {
+            tipo = "3";
+        }
+
+        $.post('/' + control + '/CreateGrid', { query: query.toString(), tipo: tipo }, function (data) {
+            $("#gridup").html(data);
+        }).fail(function (xhr, textStatus, errorThrown) {
+            alert("falha no filtro");
+        });
+    };
+
+
+</script>
