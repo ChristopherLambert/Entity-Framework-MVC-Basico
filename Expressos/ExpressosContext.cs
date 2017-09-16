@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using Expressos.Models;
 
@@ -11,7 +10,7 @@ namespace Expressos
         public DbSet<Livro> livro { get; set; }
         public DbSet<Editora> editora { get; set; }
 
-        public ExpressosContext()
+        public ExpressosContext() : base("name=ExpressosContext")
         {
            
         }
